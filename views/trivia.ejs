@@ -1,0 +1,34 @@
+<head>
+          <link rel="stylesheet" href="/styles.css">
+</head>
+<section id="trivia-section">
+          <h2>🎉 Trivia Question of the Day</h2>
+
+          <!-- Display the trivia question -->
+          <p>
+                    <%= question %>
+          </p>
+
+          <!-- Trivia form -->
+          <form action="/check-answer" method="POST">
+                    <!-- Hidden field to store the correct answer and question -->
+                    <input type="hidden" name="correctAnswer" value="<%= correctAnswer %>">
+                    <input type="hidden" name="question" value="<%= question %>">
+
+                    <!-- Display the possible answers as radio buttons -->
+                    <% answers.forEach(answer=> { %>
+                              <label>
+                                        <input type="radio" name="selectedAnswer" value="<%= answer %>">
+                                        <%= answer %>
+                              </label><br>
+                              <% }) %>
+
+                                        <!-- Submit button to check the answer -->
+                                        <button type="submit">Check Answer</button>
+          </form>
+
+          <br><br>
+
+          <!-- Link to go back to Home -->
+          <a href="/">⬅️ Back to Home</a>
+</section>
